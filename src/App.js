@@ -2,9 +2,57 @@ import React from 'react';
 import axios from 'axios';
 import Form from "@rjsf/core";
 import { Button } from 'antd';
+import {schemaRequiresTrueValue} from "@rjsf/core/lib/utils";
 
 
 const log = (type) => console.log.bind(console, type);
+
+const validate  = (formData, errors) =>{
+    return errors;
+}
+
+const onChange = (formData) => {
+    console.log(formData);
+}
+
+const test = (erros) => alert(erros.length);
+const arrayCreatetor = (props) => {
+    console.log('proops' , props.schema.items);
+   // console.log('args' , args);
+    return (
+        <div>
+           fsfdsfdsf
+        </div>
+    );
+}
+
+const CustomFieldTemplate = (props) => {
+    console.log('custom field template' , props);
+   // console.log('args' , args);
+    return (
+        <div>
+           fsfdsfdsf
+        </div>
+    );
+}
+
+const uiSchema = {
+    "ui:widget": "string"
+};
+
+const customMultiSelect  = (props) => {
+    console.log('array field' , props);
+    return (
+        <div>
+            Test
+        </div>
+    );
+}
+
+const customFields = {
+    ArrayField: customMultiSelect
+}
+
 
 
 export default class App extends React.Component {
@@ -51,10 +99,13 @@ export default class App extends React.Component {
                </div>
                 <Form schema={this.state.schema}
                   formData={this.state.formData}
-                  liveValidate
-                  onChange={log("changed")}
+                  fields={customFields}
+                  validate={validate}
+                      onChange={log("changed")}
                   onSubmit={log("submitted")}
                   onError={log("errors")} />
+                <input type="button" value="Test button" disabled={this.state.schema.errors}/>
+                <div>{this.state.schema.errors}</div>
             </div>
 
 

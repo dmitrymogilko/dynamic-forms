@@ -1,38 +1,35 @@
 {
-  "title": "A registration form",
+  "title": "Jira configuration",
   "description": "A simple form example.",
   "type": "object",
   "required": [
-    "firstName",
-    "lastName"
+    "username",
+    "token",
+    "issue-type",
+    "url"
   ],
   "properties": {
-    "firstName": {
+    "username": {
       "type": "string",
-      "title": "First name",
-      "default": "Chuck"
+      "title": "User Name"
     },
-    "lastName": {
+    "token": {
       "type": "string",
-      "title": "Last name"
+      "title": "Token"
     },
-    "age": {
-      "type": "integer",
-      "title": "Age"
-    },
-    "bio": {
+    "issue-type": {
       "type": "string",
-      "title": "Bio"
+      "title": "Issue Type",
+      "default": "Bug"
     },
-    "password": {
+    "url": {
       "type": "string",
-      "title": "Password",
-      "minLength": 3
+      "title": "Url",
+      "format": "uri"
     },
-    "telephone": {
-      "type": "string",
-      "title": "Telephone",
-      "minLength": 10
+    "multi": {
+      "type": "array",
+      "items": ["gdfgdg" , "gfdgdfg" , "ggdfgd"]
     }
   }
 }
