@@ -1,9 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import Form from "@rjsf/core";
+
 import { Button } from 'antd';
 import {schemaRequiresTrueValue} from "@rjsf/core/lib/utils";
+import { withTheme } from '@rjsf/core';
+import { Theme as AntDTheme } from '@rjsf/antd';
+import {Demo} from "./AndAutoComplete";
+import 'antd/dist/antd.css'
 
+
+const Form = withTheme(AntDTheme);
 
 const log = (type) => console.log.bind(console, type);
 
@@ -106,7 +112,14 @@ export default class App extends React.Component {
                   onError={log("errors")} />
                 <input type="button" value="Test button" disabled={this.state.schema.errors}/>
                 <div>{this.state.schema.errors}</div>
+
+                <div>
+                    <Demo></Demo>
             </div>
+
+            </div>
+
+
 
 
         )
