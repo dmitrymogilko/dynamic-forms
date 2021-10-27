@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {useRef} from "react";
 
 import { Button } from 'antd';
 import {schemaRequiresTrueValue} from "@rjsf/core/lib/utils";
@@ -50,14 +51,19 @@ const customMultiSelect  = (props) => {
     console.log('array field' , props);
     return (
         <div>
-            Test
+            <input type="text" />
         </div>
     );
 }
 
 const customFields = {
-    ArrayField: customMultiSelect
+    ArrayField: customMultiSelect,
+    sh: customMultiSelect
 }
+
+const customFormats = {
+  'phone-us': /\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}$/
+};
 
 
 
@@ -70,6 +76,11 @@ export default class App extends React.Component {
 
     componentDidMount() {
         this.setScmForm(this.state.currentScmType);
+    }
+
+    validateSchema(){
+     console.dir(this.state.schema);
+
     }
 
     setScmForm(scmId){
@@ -106,21 +117,13 @@ export default class App extends React.Component {
                 <Form schema={this.state.schema}
                   formData={this.state.formData}
                   fields={customFields}
+                  customFormats={customFormats}
+                      livevalidation
                   validate={validate}
-                      onChange={log("changed")}
+                  onChange={log("changed")}
                   onSubmit={log("submitted")}
                   onError={log("errors")} />
-                <input type="button" value="Test button" disabled={this.state.schema.errors}/>
-                <div>{this.state.schema.errors}</div>
-
-                <div>
-                    <Demo></Demo>
             </div>
-
-            </div>
-
-
-
 
         )
     }

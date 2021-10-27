@@ -6,12 +6,18 @@
     "username",
     "token",
     "issue-type",
-    "url"
+    "url",
+    "phone"
   ],
   "properties": {
     "username": {
       "type": "string",
       "title": "User Name"
+    },
+    "phone": {
+      "type": "string",
+      "title": "Phone",
+      "format":"phone-us"
     },
     "token": {
       "type": "string",
@@ -27,9 +33,9 @@
       "title": "Url",
       "format": "uri"
     },
-    "multi": {
-      "type": "array",
-      "items": ["gdfgdg" , "gfdgdfg" , "ggdfgd"]
+    "urld": {
+      "type": "sh",
+      "title": "Url"
     }
   }
 }
